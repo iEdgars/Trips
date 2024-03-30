@@ -23,7 +23,7 @@ def getKnownAirports(AirportCode: str):
     airportInfo = db.collection('Airports').document(AirportCode.upper()).get().to_dict()
     return airportInfo
 
-def writeDestinations(destinationList, AirportCode: str):
+def writeDirectDestinations(destinationList, AirportCode: str):
     doc_ref = db.collection('Airports').document(AirportCode.upper()).collection('Destinations').document('Direct')
     doc_ref.set({
         'Destinations': destinationList,
@@ -39,7 +39,7 @@ def getDirectDestinations(AirportCode: str):
     if dateDiffCheck(updateDate) > 14:
         destinations = requests.get(ryan.getDestinations(AirportCode.upper()), headers=ryan.headers).json()
         directDestinations = ryan.destinationAirports(destinations)
-        writeDestinations(directDestinations, AirportCode)
+        writeDirectDestinations(directDestinations, AirportCode)
     else:
         directDestinations = directs['Destinations']
     return directDestinations

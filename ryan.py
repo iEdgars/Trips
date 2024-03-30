@@ -16,6 +16,16 @@ def destinationAirports(destinations):
         destAirports.append(dest['arrivalAirport']['code'])
     return destAirports
 
+def mathingAirports(originDestinations: list, destinationOrigins: list):
+    # Convert the lists to sets
+    destinationSet = set(originDestinations)
+    originSet = set(destinationOrigins)
+    # Find the intersection of the two sets
+    matchedAirportSet = destinationSet & originSet
+    # Convert the result back to a list (if needed)
+    matchedAirportList = list(matchedAirportSet)
+    return matchedAirportList
+
 #date / time formatting:
 def ryanDateTime(dateTime: str, returnFormat: str='date'):
     #dateTime should be in format YYYY-MM-DDTHH:MM:SS.sss ['2023-01-17T15:55:00.000']
@@ -54,3 +64,4 @@ def ryanDateTime(dateTime: str, returnFormat: str='date'):
         return time
     if returnFormat == 'datetime':
         return datetime
+    

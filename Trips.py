@@ -57,5 +57,9 @@ if len(origin) == 3 and len(destination) == 3:
     
     directOrigins = fire.getDirectDestinations(destination)
 
+    stops = ryan.mathingAirports(directDestinations, directOrigins)
+
+    st.write(stops)
+
 
 
