@@ -43,3 +43,4 @@ def getDirectDestinations(AirportCode: str):
     else:
         directDestinations = directs['Destinations']
     return directDestinations
+
